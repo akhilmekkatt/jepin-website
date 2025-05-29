@@ -9,7 +9,7 @@ export default function About() {
         title="Festivals – Jepin"
         description="Learn more about the artist Jepin"
       />
-      <Navbar />
+      <Navbar sticky={true} />
       <main className="mx-auto">
         <section className="container mx-auto">
           <h1 className="text-4xl font-bold tracking-tight mb-6">Festivals</h1>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import logo from "../assets/logo.svg";
 import { useState } from "react";
 
-export default function Navbar() {
+export default function Navbar(props: any) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -10,7 +10,13 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-dark shadow-md p-4 flex flex-col my-5 sticky top-0 z-50">
+    <nav
+      className={
+        props?.sticky
+          ? "bg-dark shadow-md p-4 flex flex-col my-5 sticky top-0 z-50"
+          : "shadow-md p-4 flex flex-col lex flex-col my-5 custom-sticky"
+      }
+    >
       <img src={logo.src} alt="Logo" className="h-10" />
 
       {/* Desktop Menu */}

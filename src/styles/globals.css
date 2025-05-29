@@ -46,3 +46,19 @@ nav a {
   width: 150px;
   border: 1px solid #ffffff8e;
 }
+
+/* sticky navbar */
+.custom-sticky {
+  position: absolute;
+  z-index: 1222;
+  width: 100%;
+  top: 0px;
+  margin-top: 0px;
+  background: #000000;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgb(0 0 0 / 52%) 66%,
+    rgb(0 0 0 / 0%) 100%
+  );
+}

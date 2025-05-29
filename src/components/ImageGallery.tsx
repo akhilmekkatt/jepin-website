@@ -1,89 +1,94 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Footer from "./Footer";
 
-interface UnsplashImage {
+// Import images statically
+import theyyam1 from "@/assets/image placeholder.jpg";
+import theyyam2 from "@/assets/image placeholder.jpg";
+import kerala1 from "@/assets/image placeholder.jpg";
+import kerala2 from "@/assets/image placeholder.jpg";
+import karnataka1 from "@/assets/image placeholder.jpg";
+import technology1 from "@/assets/image placeholder.jpg";
+
+interface LocalImage {
   id: string;
-  urls: {
-    regular: string;
-    small: string;
-    full: string;
-  };
-  alt_description: string | null;
-  user: {
-    name: string;
-    username: string;
-  };
+  src: any; // Use `any` to accommodate imported image objects
+  alt: string;
+  category: string;
+  photographer: string;
 }
 
 const ImageGallery: React.FC = () => {
-  const [images, setImages] = useState<UnsplashImage[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [category, setCategory] = useState<string>("all");
-  const [selectedImage, setSelectedImage] = useState<UnsplashImage | null>(
-    null
-  );
-
-  // Replace with your Unsplash username
-  const username = "your_unsplash_username";
+  const [selectedImage, setSelectedImage] = useState<LocalImage | null>(null);
 
   // Predefined categories for the filter
   const categories = [
     { value: "all", label: "All" },
     { value: "theyyam", label: "Theyyam" },
-    { value: "Kerala", label: "Kerala" },
-    { value: "Karnataka", label: "Karnataka" },
+    { value: "kerala", label: "Kerala" },
+    { value: "karnataka", label: "Karnataka" },
     { value: "technology", label: "Technology" },
   ];
 
-  useEffect(() => {
-    const fetchUserPhotos = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        let url = "";
-        if (category === "all") {
-          url = `https://api.unsplash.com/users/mekkatt/photos/?client_id=LvofF0QM5RIBpFkNvpDKpCev3Hx0WR4N8PMjJig_ag0&per_page=12`;
-        } else {
-          url = `https://api.unsplash.com/search/photos/?client_id=LvofF0QM5RIBpFkNvpDKpCev3Hx0WR4N8PMjJig_ag0&query=${category}&per_page=12`;
-        }
+  // Static array of local images with metadata
+  const localImages: LocalImage[] = [
+    {
+      id: "1",
+      src: theyyam1,
+      alt: "Theyyam performance",
+      category: "theyyam",
+      photographer: "Your Name",
+    },
+    {
+      id: "2",
+      src: theyyam2,
+      alt: "Theyyam ritual",
+      category: "theyyam",
+      photographer: "Your Name",
+    },
+    {
+      id: "3",
+      src: kerala1,
+      alt: "Kerala backwaters",
+      category: "kerala",
+      photographer: "Your Name",
+    },
+    {
+      id: "4",
+      src: kerala2,
+      alt: "Kerala temple",
+      category: "kerala",
+      photographer: "Your Name",
+    },
+    {
+      id: "5",
+      src: karnataka1,
+      alt: "Karnataka monument",
+      category: "karnataka",
+      photographer: "Your Name",
+    },
+    {
+      id: "6",
+      src: technology1,
+      alt: "Tech device",
+      category: "technology",
+      photographer: "Your Name",
+    },
+    // Add more images as needed
+  ];
 
-        const response = await fetch(url, {
-          headers: {
-            Authorization: `Client-ID gRuwSpQy3KVcT_rn9u8SZfYlKQTXxNxZOAVUvcwK_q8}`,
-          },
-        });
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(JSON.stringify(errorData));
-        }
-
-        let data = await response.json();
-        if (category !== "all") {
-          data = data.results.filter(
-            (photo: UnsplashImage) => photo.user.username !== username
-          );
-        }
-
-        setImages(category === "all" ? data : data);
-        setLoading(false);
-      } catch (err: any) {
-        setError(`Error fetching photos: ${err.message}`);
-        setLoading(false);
-        console.error("API Error:", err.message);
-      }
-    };
-
-    fetchUserPhotos();
-  }, [category]);
+  // Filter images based on the selected category
+  const filteredImages =
+    category === "all"
+      ? localImages
+      : localImages.filter((image) => image.category === category);
 
   const handleCategoryChange = (value: string) => {
     setCategory(value);
   };
 
-  const openModal = (image: UnsplashImage) => {
+  const openModal = (image: LocalImage) => {
     setSelectedImage(image);
   };
 
@@ -91,15 +96,7 @@ const ImageGallery: React.FC = () => {
     setSelectedImage(null);
   };
 
-  if (loading) {
-    return <div className="text-center py-10">Loading your photos...</div>;
-  }
-
-  if (error) {
-    return <div className="text-center py-10 text-red-500">{error}</div>;
-  }
-
-  if (images.length === 0) {
+  if (filteredImages.length === 0) {
     return (
       <div className="text-center py-10">
         <div className="category-filter flex content-center gap-4 justify-center mb-6">
@@ -127,7 +124,7 @@ const ImageGallery: React.FC = () => {
     <>
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-center mb-8">
-          Your Unsplash Photos
+          Your Photo Gallery
         </h1>
         <div className="category-filter flex content-center gap-4 justify-center mb-6">
           {categories.map((cat) => (
@@ -146,23 +143,23 @@ const ImageGallery: React.FC = () => {
           ))}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images.map((image) => (
+          {filteredImages.map((image) => (
             <div
               key={image.id}
               className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer"
               onClick={() => openModal(image)}
             >
               <Image
-                src={image.urls.regular}
-                alt={image.alt_description || "Your Unsplash Photo"}
+                src={image.src}
+                alt={image.alt}
                 width={400}
                 height={300}
                 className="w-full h-64 object-cover"
                 placeholder="blur"
-                blurDataURL={image.urls.small}
+                blurDataURL={image.src.blurDataURL || image.src} // Use imported image's blurDataURL if available
               />
               <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm">
-                <p>Photo by {image.user.name}</p>
+                <p>Photo by {image.photographer}</p>
               </div>
             </div>
           ))}
@@ -185,17 +182,17 @@ const ImageGallery: React.FC = () => {
                 ×
               </button>
               <Image
-                src={selectedImage.urls.full}
-                alt={selectedImage.alt_description || "Your Unsplash Photo"}
+                src={selectedImage.src}
+                alt={selectedImage.alt}
                 width={800}
                 height={600}
                 className="w-full h-auto max-h-[80vh] object-contain"
                 placeholder="blur"
-                blurDataURL={selectedImage.urls.small}
+                blurDataURL={selectedImage.src.blurDataURL || selectedImage.src}
               />
               <div className="mt-2 text-center">
                 <p className="text-gray-800">
-                  Photo by {selectedImage.user.name}
+                  Photo by {selectedImage.photographer}
                 </p>
               </div>
             </div>

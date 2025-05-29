@@ -14,7 +14,7 @@ export default function Navbar(props: any) {
       className={
         props?.sticky
           ? "bg-dark shadow-md p-4 flex flex-col my-5 sticky top-0 z-50"
-          : "shadow-md p-4 flex flex-col lex flex-col my-5 custom-sticky"
+          : "p-4 flex flex-col lex flex-col my-5 custom-sticky"
       }
     >
       <img src={logo.src} alt="Logo" className="h-10" />
@@ -37,7 +37,7 @@ export default function Navbar(props: any) {
           </Link>
         </li>
         <li>
-          <Link href="/contacts" className="hover:text-blue-500">
+          <Link href="/contact" className="hover:text-blue-500">
             Contact
           </Link>
         </li>

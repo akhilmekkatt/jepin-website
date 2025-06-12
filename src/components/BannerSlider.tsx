@@ -34,7 +34,7 @@ const BannerSlider: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 5000); // Change slide every 5 seconds
+    }, 8000); // Change slide every 5 seconds
     return () => clearInterval(interval);
   }, []);
 
@@ -55,9 +55,9 @@ const BannerSlider: React.FC = () => {
             priority={index === 0}
           />
           <div className="absolute inset-0  bg-opacity-30 flex flex-col justify-center items-start pl-10 text-white">
-            <h1 className="text-5xl font-bold mb-4">{slide.title}</h1>
+            <h2 className="text-5xl font-bold mb-4">{slide.title}</h2>
             <p className="text-xl mb-6">{slide.subtitle}</p>
-            <button className="text-white flex items-center space-x-2">
+            <button className="p-2 text-white flex items-center space-x-2 bg-red-500 hover:bg-transparent hover:text-white duration-300">
               <span>VIEW MORE</span>
               <svg
                 className="w-5 h-5"
@@ -83,11 +83,11 @@ const BannerSlider: React.FC = () => {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-8 h-8 rounded-full border-2 ${
+            className={`w-8 h-8 rounded-full border-1 ${
               index === currentSlide
-                ? "bg-white border-white"
-                : "border-white bg-transparent"
-            } text-white flex items-center justify-center text-sm`}
+                ? "bg-white border-white text-black"
+                : "border-white bg-transparent text-white"
+            }  flex items-center justify-center text-sm`}
           >
             {`0${index + 1}`}
           </button>

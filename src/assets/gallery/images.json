@@ -1,53 +1,37 @@
-{
-  "categories": [
-    { "value": "all", "label": "All" },
-    { "value": "theyyam", "label": "Theyyam" },
-    { "value": "kerala", "label": "Kerala" },
-    { "value": "karnataka", "label": "Karnataka" },
-    { "value": "technology", "label": "Technology" }
-  ],
-  "images": [
-    {
-      "id": "1",
-      "fileName": "theyyam1.jpg",
-      "alt": "Theyyam performance",
-      "category": "theyyam",
-      "photographer": "Your Name"
-    },
-    {
-      "id": "2",
-      "fileName": "theyyam2.jpg",
-      "alt": "Theyyam ritual",
-      "category": "theyyam",
-      "photographer": "Your Name"
-    },
-    {
-      "id": "3",
-      "fileName": "kerala1.jpg",
-      "alt": "Kerala backwaters",
-      "category": "kerala",
-      "photographer": "Your Name"
-    },
-    {
-      "id": "4",
-      "fileName": "kerala2.jpg",
-      "alt": "Kerala temple",
-      "category": "kerala",
-      "photographer": "Your Name"
-    },
-    {
-      "id": "5",
-      "fileName": "karnataka1.jpg",
-      "alt": "Karnataka monument",
-      "category": "karnataka",
-      "photographer": "Your Name"
-    },
-    {
-      "id": "6",
-      "fileName": "technology1.jpg",
-      "alt": "Tech device",
-      "category": "technology",
-      "photographer": "Your Name"
-    }
-  ]
-}
+[
+  {
+    "id": "1",
+    "filename": "image placeholder.jpg",
+    "alt": "Theyyam performance",
+    "category": "theyyam",
+    "photographer": "Your Name"
+  },
+  {
+    "id": "2",
+    "filename": "image placeholder.jpg",
+    "alt": "Kerala backwaters",
+    "category": "kerala",
+    "photographer": "Your Name"
+  },
+  {
+    "id": "3",
+    "filename": "image placeholder.jpg",
+    "alt": "Tech innovation",
+    "category": "technology",
+    "photographer": "Your Name"
+  },
+  {
+    "id": "4",
+    "filename": "image placeholder.jpg",
+    "alt": "Tech innovation",
+    "category": "technology",
+    "photographer": "Your Name"
+  },
+  {
+    "id": "5",
+    "filename": "image placeholder.jpg",
+    "alt": "Tech innovation",
+    "category": "technology",
+    "photographer": "Your Name"
+  }
+]

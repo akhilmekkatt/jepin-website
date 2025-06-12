@@ -20,24 +20,24 @@ export default function Navbar(props: any) {
       <img src={logo.src} alt="Logo" className="h-10" />
 
       {/* Desktop Menu */}
-      <ul className="mt-6 flex justify-center gap-6 text-lg font-medium text-white">
+      <ul className="mt-6 flex justify-center gap-6 text-lg font-medium">
         <li>
-          <Link href="/" className="hover:text-blue-500">
+          <Link href="/" className="hover:text-red-500">
             Home
           </Link>
         </li>
         <li>
-          <Link href="/about" className="hover:text-blue-500">
+          <Link href="/about" className="hover:text-red-500">
             About
           </Link>
         </li>
         <li>
-          <Link href="/festivals" className="hover:text-blue-500">
+          <Link href="/festivals" className="hover:text-red-500">
             Festivals
           </Link>
         </li>
         <li>
-          <Link href="/contact" className="hover:text-blue-500">
+          <Link href="/contact" className="hover:text-red-500">
             Contact
           </Link>
         </li>

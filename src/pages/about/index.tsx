@@ -1,18 +1,18 @@
 import SEO from "../../components/SEO";
 import Navbar from "../../components/Navbar";
+import Image from "next/image";
+import jepinImg from "@/assets/jepin.jpg";
+
 export default function About() {
   return (
     <>
       <SEO
         title="About – Jepin"
-        description="Learn more about the artist Jepin"
+        description="Learn more about the Photographer Jepin"
       />
       <Navbar sticky={true} />
       <main className="mx-auto">
         <section className="container mx-auto">
-          <h1 className="text-4xl font-bold tracking-tight mb-6">
-            About Jepin Krishnan
-          </h1>
           <div className="space-y-6 text-neutral-300 text-base leading-relaxed">
             <p>
               Jepin Krishnan is a passionate cultural explorer and visual
@@ -43,6 +43,34 @@ export default function About() {
               journey, Jepin continues to build a bridge between tradition and
               modernity, one story at a time.
             </p>
+          </div>
+        </section>
+        <section className="container mx-auto my-12">
+          <h2 className="text-4xl tracking-tight mb-6">About Jepin Krishnan</h2>
+
+          <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-10">
+            {/* Image */}
+            <div className="w-full md:w-1/3">
+              <Image
+                className="rounded-2xl shadow-lg w-full object-cover"
+                alt="Jepin Krishnan"
+                src={jepinImg}
+                width="450"
+                height="450"
+              />
+            </div>
+
+            {/* Text */}
+            <div className="text-neutral-300 text-base leading-relaxed md:w-2/3">
+              <p>
+                Jepin Krishnan is much loved, recognized, and respected in the
+                field of cultural and visual storytelling not only across India
+                but around the world. MBA by education, an photographer by
+                passion, and a storyteller by instinct, Jepin inspires countless
+                individuals who dream of stepping beyond routine life to follow
+                a path fueled by creativity and purpose.
+              </p>
+            </div>
           </div>
         </section>
       </main>

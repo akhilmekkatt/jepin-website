@@ -1,11 +1,15 @@
 import type { NextConfig } from "next";
+const path = require("path");
 
 const nextConfig: NextConfig = {
   /* config options here */
   /*   output: "export", */
   images: {
     unoptimized: true,
-    domains: ["images.unsplash.com", "wallpaperaccess.com"],
+    domains: [],
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, "src/styles")],
   },
   reactStrictMode: true,
 };

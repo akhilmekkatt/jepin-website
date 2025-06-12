@@ -65,25 +65,6 @@ const Footer: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <div className="mt-6">
-              <h4 className="text-sm font-semibold text-neutral-300">
-                Newsletter Signup
-              </h4>
-              <form className="mt-2 flex flex-col sm:flex-row gap-2">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-amber-600 hover:bg-amber-700 rounded-md text-white transition duration-300"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
           </div>
         </div>
 

@@ -3,7 +3,7 @@ const path = require("path");
 
 const nextConfig: NextConfig = {
   /* config options here */
-  /*   output: "export", */
+  output: "export",
   images: {
     unoptimized: true,
     domains: [],

@@ -10,13 +10,12 @@ export default function About() {
         description="Learn more about the artist Jepin"
       />
       <Navbar sticky={true} />
-      <main className="mx-auto">
-        <section className="container mx-auto">
-          <h1 className="text-4xl  tracking-tight mb-6">Festivals</h1>
-          <ImageGallery />
-        </section>
-        <Footer />
-      </main>
+
+      <section className="container mx-auto px-5">
+        <h1 className="text-4xl  tracking-tight mb-6">Festivals</h1>
+        <ImageGallery />
+      </section>
+      <Footer />
     </>
   );
 }

@@ -11,13 +11,13 @@ interface Slide {
 const slides: Slide[] = [
   {
     image: "https://wallpaperaccess.com/full/2608588.jpg",
-    title: "Muthappan",
+    title: "Theyyam 1",
     subtitle:
       "Muthappan is believed to be the personification of two divine figures.",
   },
   {
     image: "https://wallpaperaccess.com/full/2612130.jpg",
-    title: "Red God",
+    title: "Theyyam 2",
     subtitle: "The biggest mistake is you think you have time.",
   },
   {
@@ -54,26 +54,29 @@ const BannerSlider: React.FC = () => {
             className="object-cover" // Removed redundant w-full h-full since fill handles it
             priority={index === 0}
           />
-          <div className="absolute inset-0  bg-opacity-30 flex flex-col justify-center items-start pl-10 text-white">
-            <h2 className="text-5xl font-bold mb-4">{slide.title}</h2>
-            <p className="text-xl mb-6">{slide.subtitle}</p>
-            <button className="p-2 text-white flex items-center space-x-2 bg-red-500 hover:bg-transparent hover:text-white duration-300">
-              <span>VIEW MORE</span>
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
+
+          <div className="absolute inset-0  bg-opacity-30 flex flex-col justify-center items-start text-white">
+            <div className="container mx-auto px-10">
+              <h2 className="text-5xl font-bold mb-6">{slide.title}</h2>
+              <p className="text-xl mb-6">{slide.subtitle}</p>
+              <button className="p-2 text-white flex items-center space-x-2 bg-red-500 hover:bg-transparent hover:text-white duration-300">
+                <span>VIEW MORE</span>
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       ))}
@@ -83,11 +86,11 @@ const BannerSlider: React.FC = () => {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-8 h-8 rounded-full border-1 ${
+            className={`w-6 h-6 rounded-full border-1 ${
               index === currentSlide
                 ? "bg-white border-white text-black"
                 : "border-white bg-transparent text-white"
-            }  flex items-center justify-center text-sm`}
+            }  flex items-center justify-center text-xs`}
           >
             {`0${index + 1}`}
           </button>

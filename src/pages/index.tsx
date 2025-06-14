@@ -12,8 +12,8 @@ export default function Home() {
         description="Portfolio of Jepin – photographer, and creative explorer."
       />
       <Navbar sticky={false} />
-      {/* <BannerSlider /> */}
-      <FlickrSlider />
+      <BannerSlider />
+      {/* <FlickrSlider /> */}
       <Footer />
     </>
   );

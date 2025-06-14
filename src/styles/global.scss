@@ -42,13 +42,6 @@ body {
   color: var(--background);
 }
 
-// Navigation styles
-nav {
-  a {
-    font-size: 0.8rem;
-  }
-}
-
 // Category filter styles
 @media only screen and (max-width: 600px) {
   .category-filter {
@@ -56,14 +49,6 @@ nav {
     overflow: auto;
   }
 }
-
-/* .category-filter {
-  > .category {
-    height: 100px;
-    width: 150px;
-    border: 1px solid #ffffff8e;
-  }
-} */
 
 // Sticky navbar styles
 .custom-sticky {

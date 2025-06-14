@@ -30,7 +30,7 @@ const ContactUs: React.FC = () => {
       <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-            <h2 className="text-center text-3xl font-extrabold ">Contact Us</h2>
+            <h2 className="text-center text-4xl ">Contact Us</h2>
             <p className="mt-2 text-center text-sm ">
               We'd love to hear from you! Fill out the form below.
             </p>
@@ -102,7 +102,7 @@ const ContactUs: React.FC = () => {
               <button
                 type="submit"
                 onClick={handleSubmit}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Send Message
               </button>

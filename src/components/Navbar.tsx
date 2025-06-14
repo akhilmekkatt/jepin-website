@@ -13,14 +13,14 @@ export default function Navbar(props: any) {
     <nav
       className={
         props?.sticky
-          ? "bg-dark shadow-md p-4 flex flex-col my-5 sticky top-0 z-50"
-          : "p-4 flex flex-col lex flex-col my-5 custom-sticky"
+          ? "bg-dark shadow-md p-6 flex flex-col my-5 sticky top-0 z-50"
+          : "p-6 flex flex-col lex flex-col my-5 custom-sticky"
       }
     >
       <img src={logo.src} alt="Logo" className="h-10" />
 
       {/* Desktop Menu */}
-      <ul className="mt-6 flex justify-center gap-6 text-lg font-medium">
+      <ul className="mt-6 flex justify-center gap-6">
         <li>
           <Link href="/" className="hover:text-red-500">
             Home

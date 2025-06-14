@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold tracking-tight">
+            <h3 className="text-xl  tracking-tight">
               Jepin Krishnan Photography
             </h3>
             <p className="text-neutral-400 text-sm leading-relaxed">
@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
 
           {/* Menu Links */}
           <div>
-            <h3 className="text-xl font-bold tracking-tight mb-4">Explore</h3>
+            <h3 className="text-xl  tracking-tight mb-4">Explore</h3>
             <ul className="space-y-3">
               {[
                 { href: "/", label: "Home" },
@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
 
           {/* Newsletter & Contact Info */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold tracking-tight">Stay Connected</h3>
+            <h3 className="text-xl  tracking-tight">Stay Connected</h3>
             <ul className="space-y-3">
               {[
                 {

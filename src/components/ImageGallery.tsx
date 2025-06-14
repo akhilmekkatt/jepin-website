@@ -58,10 +58,7 @@ const ImageGallery: React.FC = () => {
       <h2 className="text-2xl text-center mb-8">Your Photo Gallery</h2>
 
       {/* Category Filter */}
-      <div
-        ref={container}
-        className="category-filter flex content-center gap-4 mb-6"
-      >
+      <div className="category-filter flex content-center gap-4 mb-6">
         {categories.map((cat) => (
           <div
             key={cat.value}

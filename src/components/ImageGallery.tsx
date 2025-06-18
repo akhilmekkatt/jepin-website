@@ -92,7 +92,7 @@ const ImageGallery: React.FC = () => {
                 alt={image.alt}
                 width={400}
                 height={300}
-                className="w-full h-64 object-cover"
+                className="w-full h-64 object-cover transition-transform duration-300 hover:scale-110"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-opacity-50 text-white p-2 text-xs">
                 <p>Photo by {image.photographer}</p>
@@ -105,7 +105,7 @@ const ImageGallery: React.FC = () => {
       {/* Modal */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 transition-transform duration-300 hover:scale-110"
           onClick={closeModal}
         >
           <div

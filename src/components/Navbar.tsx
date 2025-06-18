@@ -5,57 +5,119 @@ import { useEffect, useState } from "react";
 
 export default function Navbar(props: any) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  // Detect dark mode
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    setIsDarkMode(mediaQuery.matches);
 
-    const handler = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
+  useEffect(() => {
+    // Check saved theme or system preference
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+      setIsDark(true);
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      setIsDark(false);
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handler = (e: any) => {
+      const newTheme = e.matches ? "dark" : "light";
+      setIsDark(e.matches);
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    };
     mediaQuery.addEventListener("change", handler);
     return () => mediaQuery.removeEventListener("change", handler);
   }, []);
 
+  const toggleTheme = () => {
+    const newTheme = !isDark ? "dark" : "light";
+    setIsDark(!isDark);
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+
   return (
     <nav
       className={
-        props?.sticky ? "bg-dark p-4 sticky top-0 z-50" : "p-4 custom-sticky"
+        props?.sticky ? "bg-dark p-4 sticky top-0 z-50 " : "p-4 custom-sticky "
       }
     >
       <div className="flex md:flex-col md:mb-10 justify-between">
         {/* Logo */}
-        {!isDarkMode && props?.sticky ? (
-          <img src={logo_dark.src} alt="Logo" className="h-10 my-4" />
+        {!isDark && props?.sticky ? (
+          <img src={logo_dark.src} alt="Logo" className="h-10 md:my-4" />
         ) : (
-          <img src={logo.src} alt="Logo" className="h-10 my-4" />
+          <img src={logo.src} alt="Logo" className="h-10 md:my-4" />
         )}
 
-        {/* Hamburger Menu Button (Mobile) */}
-        <button
-          className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5"
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          <span
-            className={`block w-6 h-0.5 bg-white transition-transform duration-300 ${
-              isOpen ? "rotate-45 translate-y-2" : ""
-            }`}
-          ></span>
-          <span
-            className={`block w-6 h-0.5 bg-white transition-opacity duration-300 ${
-              isOpen ? "opacity-0" : ""
-            }`}
-          ></span>
-          <span
-            className={`block w-6 h-0.5 bg-white transition-transform duration-300 ${
-              isOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
-          ></span>
-        </button>
+        {/* Theme Toggle and Hamburger Menu Button (Mobile) */}
+        <div className="flex items-center space-x-4">
+          <button
+            onClick={toggleTheme}
+            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            className="w-6 h-6 floating-menu"
+          >
+            {isDark ? (
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--foreground)"
+                strokeWidth="2"
+                className="w-full h-full"
+              >
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            ) : (
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--foreground)"
+                strokeWidth="2"
+                className="w-full h-full"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            )}
+          </button>
+          <button
+            className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`block w-6 h-0.5 bg-[var(--foreground)] transition-transform duration-300 ${
+                isOpen ? "rotate-45 translate-y-2" : ""
+              }`}
+            ></span>
+            <span
+              className={`block w-6 h-0.5 bg-[var(--foreground)] transition-opacity duration-300 ${
+                isOpen ? "opacity-0" : ""
+              }`}
+            ></span>
+            <span
+              className={`block w-6 h-0.5 bg-[var(--foreground)] transition-transform duration-300 ${
+                isOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
+            ></span>
+          </button>
+        </div>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex justify-center gap-6">

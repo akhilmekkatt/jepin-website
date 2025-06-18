@@ -54,9 +54,9 @@ export default function Navbar(props: any) {
       <div className="flex md:flex-col md:mb-10 justify-between">
         {/* Logo */}
         {!isDark && props?.sticky ? (
-          <img src={logo_dark.src} alt="Logo" className="h-10 md:my-4" />
+          <img src={logo_dark.src} alt="Logo" className="h-10 md:my-4 _logo" />
         ) : (
-          <img src={logo.src} alt="Logo" className="h-10 md:my-4" />
+          <img src={logo.src} alt="Logo" className="h-10 md:my-4 _logo" />
         )}
 
         {/* Theme Toggle and Hamburger Menu Button (Mobile) */}
@@ -70,7 +70,9 @@ export default function Navbar(props: any) {
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="var(--foreground)"
+                stroke={
+                  props?.sticky ? "var(--foreground)" : "var(--background)"
+                }
                 strokeWidth="2"
                 className="w-full h-full"
               >
@@ -88,7 +90,9 @@ export default function Navbar(props: any) {
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="var(--foreground)"
+                stroke={
+                  props?.sticky ? "var(--foreground)" : "var(--background)"
+                }
                 strokeWidth="2"
                 className="w-full h-full"
               >
@@ -102,17 +106,27 @@ export default function Navbar(props: any) {
             aria-label="Toggle menu"
           >
             <span
-              className={`block w-6 h-0.5 bg-[var(--foreground)] transition-transform duration-300 ${
+              className={`block w-6 h-0.5  ${
+                props?.sticky
+                  ? "bg-[var(--foreground)]"
+                  : "bg-[var(--background)]"
+              } transition-transform duration-300 ${
                 isOpen ? "rotate-45 translate-y-2" : ""
               }`}
             ></span>
             <span
-              className={`block w-6 h-0.5 bg-[var(--foreground)] transition-opacity duration-300 ${
-                isOpen ? "opacity-0" : ""
-              }`}
+              className={`block w-6 h-0.5  ${
+                props?.sticky
+                  ? "bg-[var(--foreground)]"
+                  : "bg-[var(--background)]"
+              } transition-opacity duration-300 ${isOpen ? "opacity-0" : ""}`}
             ></span>
             <span
-              className={`block w-6 h-0.5 bg-[var(--foreground)] transition-transform duration-300 ${
+              className={`block w-6 h-0.5  ${
+                props?.sticky
+                  ? "bg-[var(--foreground)]"
+                  : "bg-[var(--background)]"
+              } transition-transform duration-300 ${
                 isOpen ? "-rotate-45 -translate-y-2" : ""
               }`}
             ></span>
@@ -122,22 +136,34 @@ export default function Navbar(props: any) {
         {/* Desktop Menu */}
         <ul className="hidden md:flex justify-center gap-6">
           <li>
-            <Link href="/" className="hover:text-red-500">
+            <Link
+              href="/"
+              className="hover:text-red-500  transition delay-100 duration-300"
+            >
               Home
             </Link>
           </li>
           <li>
-            <Link href="/about" className="hover:text-red-500">
+            <Link
+              href="/about"
+              className="hover:text-red-500  transition delay-100 duration-300"
+            >
               About
             </Link>
           </li>
           <li>
-            <Link href="/festivals" className="hover:text-red-500">
+            <Link
+              href="/festivals"
+              className="hover:text-red-500  transition delay-100 duration-300"
+            >
               Festivals
             </Link>
           </li>
           <li>
-            <Link href="/contact" className="hover:text-red-500">
+            <Link
+              href="/contact"
+              className="hover:text-red-500  transition delay-100 duration-300"
+            >
               Contact
             </Link>
           </li>
@@ -151,14 +177,18 @@ export default function Navbar(props: any) {
         }`}
       >
         <li>
-          <Link href="/" className="hover:text-red-500" onClick={toggleMenu}>
+          <Link
+            href="/"
+            className="hover:text-red-500 font-bold"
+            onClick={toggleMenu}
+          >
             Home
           </Link>
         </li>
         <li>
           <Link
             href="/about"
-            className="hover:text-red-500"
+            className="hover:text-red-500 font-bold"
             onClick={toggleMenu}
           >
             About
@@ -167,7 +197,7 @@ export default function Navbar(props: any) {
         <li>
           <Link
             href="/festivals"
-            className="hover:text-red-500"
+            className="hover:text-red-500 font-bold"
             onClick={toggleMenu}
           >
             Festivals
@@ -176,7 +206,7 @@ export default function Navbar(props: any) {
         <li>
           <Link
             href="/contact"
-            className="hover:text-red-500"
+            className="hover:text-red-500 font-bold"
             onClick={toggleMenu}
           >
             Contact

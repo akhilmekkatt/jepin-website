@@ -13,7 +13,7 @@ export default function About() {
       />
       <Navbar sticky={true} />
 
-      <section className="container mx-auto px-5">
+      <section className="container mx-auto px-5 transition delay-150 duration-300">
         <div className="space-y-6  text-base leading-relaxed">
           <p>
             Jepin Krishnan is a passionate cultural explorer and visual
@@ -46,7 +46,9 @@ export default function About() {
         </div>
       </section>
       <section className="container mx-auto my-12 px-5">
-        <h2 className="text-4xl tracking-tight mb-6">About Jepin Krishnan</h2>
+        <h2 className="text-4xl tracking-tight mb-6 transition delay-150 duration-300">
+          About Jepin Krishnan
+        </h2>
 
         <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-10">
           {/* Image */}

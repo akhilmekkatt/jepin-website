@@ -51,15 +51,15 @@ const BannerSlider: React.FC = () => {
             src={slide.image}
             alt={slide.title}
             fill // Use the fill prop instead of layout="fill"
-            className="object-cover" // Removed redundant w-full h-full since fill handles it
+            className="object-cover transition duration-700" // Removed redundant w-full h-full since fill handles it
             priority={index === 0}
           />
 
-          <div className="absolute inset-0  bg-opacity-30 flex flex-col justify-center items-start text-white">
-            <div className="container mx-auto px-10">
+          <div className="transition duration-300 absolute inset-0  bg-opacity-30 flex flex-col justify-center items-start text-white">
+            <div className="container mx-auto px-10 ">
               <h2 className="text-5xl font-bold mb-6">{slide.title}</h2>
               <p className="text-xl mb-6">{slide.subtitle}</p>
-              <button className="p-2 text-white flex items-center space-x-2 bg-red-500 hover:bg-transparent hover:text-white duration-300">
+              <button className=" transition duration-700 ease-in-out p-2 text-white flex items-center space-x-2 bg-red-500 hover:bg-transparent hover:text-white">
                 <span>VIEW MORE</span>
                 <svg
                   className="w-5 h-5"

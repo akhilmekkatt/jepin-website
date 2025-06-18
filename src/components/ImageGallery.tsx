@@ -88,7 +88,7 @@ const ImageGallery: React.FC = () => {
               onClick={() => openModal(image)}
             >
               <Image
-                src={`assets/gallery/${image.filename}`} // Path under /public
+                src={`/assets/gallery/${image.filename}`} // Path under /public
                 alt={image.alt}
                 width={400}
                 height={300}
